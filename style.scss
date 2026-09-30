@@ -1,25 +1,128 @@
-$color-base: red;
-$base: 1rem;
+@use 'sass:map';
 
-// fade-out($color, $porcentaje) / transparentize($color, $porcentaje).
-@function calcular-estilo($color, $i) {
-    $opacidad: darken($color, ($i - 1) * 5%);
-    $tamano: 0.7rem + ($i * 0.2rem);
+$color-tabla: black 0.1rem solid;
+$padding-tabla: 0.5rem 1rem;
+$border-tabla: 0.2rem;
 
-    @return ( //retorno doble mediante lista
-        "color": $opacidad,
-        "font-size": $tamano
-    )
+@mixin centrar-tabla($background: white){
+    background-color: $background;
+    margin: 0 auto;
+    border-spacing: 0; /* border-collapse: collapse;*/
+    overflow: hidden;
+    border-radius: $border-tabla;
 }
 
-@for $i from 1 through 4 {
-    $estilos: calcular-estilo($color-base, $i);
-    .button-#{$i} {
-        color: white;
-        padding: 0.5rem;
-        border-radius: 0.2rem;
-        border: black 0.1rem solid;
-        background-color: map-get($estilos, "color");
-        font-size: map-get($estilos, "font-size");
+.tabla{
+        @include centrar-tabla(#c9c9c9);
+    & .tabla-head th{
+        border: $color-tabla;   
+        padding: $padding-tabla;
     }
-} 
+    & .tabla-body td{
+        border: $color-tabla;
+        padding: $padding-tabla;
+    }
+}
+
+%articulos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+    padding: $padding-tabla;
+    background-color: #2e9c9c;
+    border-radius: $border-tabla;
+    transition: box-shadow 0.3s ease;
+}
+
+%articulos:hover{
+    cursor: pointer;
+    box-shadow: 0 0.1rem 0.4rem #364552;
+}
+
+.article-pri{
+    @extend %articulos;
+}
+
+.article-seg{
+    @extend %articulos;
+}
+
+// Lectura de un mapa con map.get (requiere @use 'sass:map')
+$fondo: (
+    "principal": #22c55e,
+    "secundario": #e8fff2
+);
+
+.section-pri{
+    background-color: map.get($fondo, "principal"); //metodo map
+    padding: $padding-tabla;
+    margin: 1rem;
+}
+
+// uso alternativa especial con to = 1 a 3 en este caso
+@for $i from 1 through 4 {
+    .btn-#{$i} {
+        background-color: #3b82f6;
+        border: none;
+        font-size: 1rem;
+        margin: 1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.2rem;
+    @if($i>2){
+        background-color: red;
+    }
+    }
+}
+
+
+// (No usado) Lista
+$sizes: small, medium, large;
+
+@each $i in $sizes {
+    .icon-#{$i} {
+    // Aplicamos estilos segun condicionales
+    @if $i == small {
+        width: 16px;
+        height: 16px;
+    } @else if $i == medium {
+        width: 24px;
+        height: 24px;
+    } @else if $i == large {
+        width: 32px;
+        height: 32px;
+        }
+    }
+}
+
+$color: (
+    primary: #3b82f6,
+    secondary: #64748b,
+    success: #22c55e,
+    warning: #eab308
+);
+
+@each $i ,$colores in $color{
+    .btn-#{$i} {
+        background-color: $colores;
+        background-color: darken($colores, 2%);
+        border: none;
+        font-size: 1rem;
+        margin: 1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.2rem;
+    }
+}
+
+// (No usado) Lista de tuplas
+$status-list: 
+    (success, #22c55e, #ffffff),
+    (warning, #eab308, #000000),
+    (danger, #ef4444, #ffffff);
+
+@each $i, $bg, $text in $status-list {
+    .alert-#{$i} {
+        background-color: $bg;
+        color: $text;
+    }
+}
