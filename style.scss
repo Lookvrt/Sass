@@ -1,0 +1,25 @@
+$color-base: red;
+$base: 1rem;
+
+// fade-out($color, $porcentaje) / transparentize($color, $porcentaje).
+@function calcular-estilo($color, $i) {
+    $opacidad: darken($color, ($i - 1) * 5%);
+    $tamano: 0.7rem + ($i * 0.2rem);
+
+    @return ( //retorno doble mediante lista
+        "color": $opacidad,
+        "font-size": $tamano
+    )
+}
+
+@for $i from 1 through 4 {
+    $estilos: calcular-estilo($color-base, $i);
+    .button-#{$i} {
+        color: white;
+        padding: 0.5rem;
+        border-radius: 0.2rem;
+        border: black 0.1rem solid;
+        background-color: map-get($estilos, "color");
+        font-size: map-get($estilos, "font-size");
+    }
+} 

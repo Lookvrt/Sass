@@ -1,0 +1,35 @@
+.button-1 {
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  border: black 0.1rem solid;
+  background-color: red;
+  font-size: 0.9rem;
+}
+
+.button-2 {
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  border: black 0.1rem solid;
+  background-color: rgb(229.5, 0, 0);
+  font-size: 1.1rem;
+}
+
+.button-3 {
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  border: black 0.1rem solid;
+  background-color: #cc0000;
+  font-size: 1.3rem;
+}
+
+.button-4 {
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  border: black 0.1rem solid;
+  background-color: rgb(178.5, 0, 0);
+  font-size: 1.5rem;
+}/*# sourceMappingURL=style.css.map */
