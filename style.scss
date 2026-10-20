@@ -1,100 +1,42 @@
-$color-header: #7caaff;
-$color-alert: #e92323;
-$color-tabla: #c9c9c9;
-
-html{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    body{
-        margin: 0;
-        display: grid;
-        grid-template-areas: "header",
-                        "main",
-                        "footer";
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 800px 80px;
-
-        header{
-            grid-area: "header";
-            background-color: $color-header;
-            padding: 1rem;
-        }
-
-        main{
-            grid-area: "main";
-        }
-
-        footer {
-            grid-area: "footer";
-            background-color: black;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
-    }
+nav{
+    display: flex;
 }
 
-@function color-texto($fondo){
-    @if(lightness($fondo) > 50%){
-        @return black;
-    } @else {
-        @return white;
-    }
-}
-
-$alertas: (
-    'info': adjust-hue($color-alert, 220deg),     // azul
-    'success': adjust-hue($color-alert, 90deg),   // verde
-    'warning': adjust-hue($color-alert, 180deg),  // amarillo
-    'danger': $color-alert  
+$colores: (
+    '1': #ffd930,
+    '2': #5eff81,
+    '3': #53f9ff,
+    '4': #e732ff
 );
 
-@each $i, $color in $alertas {
-    .alert-#{$i}{
-        background-color: $color;
-        font-size: 1rem;
-        color: color-texto($color);
-        padding: 0.5rem 1rem;
-        margin: 0 0.5rem;
-        border: none;
-    @if($i == "danger"){
-        animation: borde 1.5s infinite;
-    }
-    &:hover{
-        cursor: pointer;
-    }
-    }
-}
+@each $i, $color in $colores{
+        .nav-#{$i}{
+            position: relative;
+            padding: 1rem 0.5rem;
+            text-decoration: none;
+            color: white;
+            background-color: black;
 
-@keyframes borde { // animacion
-    0% {
-        box-shadow: 0 0 0 0px #e74c3cb3;
-    }
-    100% {
-        box-shadow: 0 0 0 8px #e74c3c00;
-    }
-}
-
-@for $i from 1 through 3{
-    .card-#{$i}{
-        background-color: $color-tabla;
-        color: color-texto($color-tabla);
-        font-size: 1rem + ($i * 0.2rem);
-        margin: 1rem auto;
-        transition: box-shadow 0.3s ease;   
-        border-spacing: 0;
-        overflow: hidden;    
-    &:hover{
-        transform: translateY(-5px);
-        box-shadow: ($i * 0.2rem) ($i * 0.2rem) 0.4rem #364552;
-        cursor: pointer;
-    }
-        & thead th{
-            border:black 0.1rem solid;
-            padding: 0.5rem 1rem;
+            span {
+                position: relative;  
+            }
+        
+        &::before { 
+            content: "";
+            position: absolute; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0.3rem; 
+            background-color: $color;
+            transition: height 0.2s ease;
         }
-        & tbody td{
-            border:black 0.1rem  solid;
-            padding: 0.5rem 1rem;
-        }
+        
+        &:hover {
+            color: black;
+            &::before {
+                height: 100%;
+            }
+        } 
     }
 }

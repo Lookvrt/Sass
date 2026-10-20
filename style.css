@@ -1,151 +1,111 @@
-html {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+nav {
+  display: flex;
 }
-html body {
-  margin: 0;
-  display: grid;
-  grid-template-areas: "header", "main", "footer";
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 800px 80px;
-}
-html body header {
-  grid-area: "header";
-  background-color: #7caaff;
-  padding: 1rem;
-}
-html body main {
-  grid-area: "main";
-}
-html body footer {
-  grid-area: "footer";
-  background-color: black;
+
+.nav-1 {
+  position: relative;
+  padding: 1rem 0.5rem;
+  text-decoration: none;
   color: white;
-  padding: 1rem;
-  text-align: center;
+  background-color: black;
+}
+.nav-1 span {
+  position: relative;
+}
+.nav-1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0.3rem;
+  background-color: #ffd930;
+  transition: height 0.2s ease;
+}
+.nav-1:hover {
+  color: black;
+}
+.nav-1:hover::before {
+  height: 100%;
 }
 
-.alert-info {
-  background-color: #2365e9;
-  font-size: 1rem;
-  color: black;
-  padding: 0.5rem 1rem;
-  margin: 0 0.5rem;
-  border: none;
+.nav-2 {
+  position: relative;
+  padding: 1rem 0.5rem;
+  text-decoration: none;
+  color: white;
+  background-color: black;
 }
-.alert-info:hover {
-  cursor: pointer;
+.nav-2 span {
+  position: relative;
+}
+.nav-2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0.3rem;
+  background-color: #5eff81;
+  transition: height 0.2s ease;
+}
+.nav-2:hover {
+  color: black;
+}
+.nav-2:hover::before {
+  height: 100%;
 }
 
-.alert-success {
-  background-color: #86e923;
-  font-size: 1rem;
-  color: black;
-  padding: 0.5rem 1rem;
-  margin: 0 0.5rem;
-  border: none;
+.nav-3 {
+  position: relative;
+  padding: 1rem 0.5rem;
+  text-decoration: none;
+  color: white;
+  background-color: black;
 }
-.alert-success:hover {
-  cursor: pointer;
+.nav-3 span {
+  position: relative;
+}
+.nav-3::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0.3rem;
+  background-color: #53f9ff;
+  transition: height 0.2s ease;
+}
+.nav-3:hover {
+  color: black;
+}
+.nav-3:hover::before {
+  height: 100%;
 }
 
-.alert-warning {
-  background-color: #23e9e9;
-  font-size: 1rem;
+.nav-4 {
+  position: relative;
+  padding: 1rem 0.5rem;
+  text-decoration: none;
+  color: white;
+  background-color: black;
+}
+.nav-4 span {
+  position: relative;
+}
+.nav-4::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0.3rem;
+  background-color: #e732ff;
+  transition: height 0.2s ease;
+}
+.nav-4:hover {
   color: black;
-  padding: 0.5rem 1rem;
-  margin: 0 0.5rem;
-  border: none;
 }
-.alert-warning:hover {
-  cursor: pointer;
-}
-
-.alert-danger {
-  background-color: #e92323;
-  font-size: 1rem;
-  color: black;
-  padding: 0.5rem 1rem;
-  margin: 0 0.5rem;
-  border: none;
-  animation: borde 1.5s infinite;
-}
-.alert-danger:hover {
-  cursor: pointer;
-}
-
-@keyframes borde {
-  0% {
-    box-shadow: 0 0 0 0px rgba(231, 76, 60, 0.7019607843);
-  }
-  100% {
-    box-shadow: 0 0 0 8px rgba(231, 76, 60, 0);
-  }
-}
-.card-1 {
-  background-color: #c9c9c9;
-  color: black;
-  font-size: 1.2rem;
-  margin: 1rem auto;
-  transition: box-shadow 0.3s ease;
-  border-spacing: 0;
-  overflow: hidden;
-}
-.card-1:hover {
-  transform: translateY(-5px);
-  box-shadow: 0.2rem 0.2rem 0.4rem #364552;
-  cursor: pointer;
-}
-.card-1 thead th {
-  border: black 0.1rem solid;
-  padding: 0.5rem 1rem;
-}
-.card-1 tbody td {
-  border: black 0.1rem solid;
-  padding: 0.5rem 1rem;
-}
-
-.card-2 {
-  background-color: #c9c9c9;
-  color: black;
-  font-size: 1.4rem;
-  margin: 1rem auto;
-  transition: box-shadow 0.3s ease;
-  border-spacing: 0;
-  overflow: hidden;
-}
-.card-2:hover {
-  transform: translateY(-5px);
-  box-shadow: 0.4rem 0.4rem 0.4rem #364552;
-  cursor: pointer;
-}
-.card-2 thead th {
-  border: black 0.1rem solid;
-  padding: 0.5rem 1rem;
-}
-.card-2 tbody td {
-  border: black 0.1rem solid;
-  padding: 0.5rem 1rem;
-}
-
-.card-3 {
-  background-color: #c9c9c9;
-  color: black;
-  font-size: 1.6rem;
-  margin: 1rem auto;
-  transition: box-shadow 0.3s ease;
-  border-spacing: 0;
-  overflow: hidden;
-}
-.card-3:hover {
-  transform: translateY(-5px);
-  box-shadow: 0.6rem 0.6rem 0.4rem #364552;
-  cursor: pointer;
-}
-.card-3 thead th {
-  border: black 0.1rem solid;
-  padding: 0.5rem 1rem;
-}
-.card-3 tbody td {
-  border: black 0.1rem solid;
-  padding: 0.5rem 1rem;
+.nav-4:hover::before {
+  height: 100%;
 }/*# sourceMappingURL=style.css.map */
