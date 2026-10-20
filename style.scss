@@ -1,128 +1,115 @@
-@use 'sass:map';
-
-$color-tabla: black 0.1rem solid;
-$padding-tabla: 0.5rem 1rem;
-$border-tabla: 0.2rem;
-
-@mixin centrar-tabla($background: white){
-    background-color: $background;
-    margin: 0 auto;
-    border-spacing: 0; /* border-collapse: collapse;*/
-    overflow: hidden;
-    border-radius: $border-tabla;
-}
-
-.tabla{
-        @include centrar-tabla(#c9c9c9);
-    & .tabla-head th{
-        border: $color-tabla;   
-        padding: $padding-tabla;
-    }
-    & .tabla-body td{
-        border: $color-tabla;
-        padding: $padding-tabla;
-    }
-}
-
-%articulos {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 1rem;
-    padding: $padding-tabla;
-    background-color: #2e9c9c;
-    border-radius: $border-tabla;
-    transition: box-shadow 0.3s ease;
-}
-
-%articulos:hover{
-    cursor: pointer;
-    box-shadow: 0 0.1rem 0.4rem #364552;
-}
-
-.article-pri{
-    @extend %articulos;
-}
-
-.article-seg{
-    @extend %articulos;
-}
-
-// Lectura de un mapa con map.get (requiere @use 'sass:map')
-$fondo: (
-    "principal": #22c55e,
-    "secundario": #e8fff2
-);
-
-.section-pri{
-    background-color: map.get($fondo, "principal"); //metodo map
-    padding: $padding-tabla;
-    margin: 1rem;
-}
-
-// uso alternativa especial con to = 1 a 3 en este caso
-@for $i from 1 through 4 {
-    .btn-#{$i} {
-        background-color: #3b82f6;
-        border: none;
-        font-size: 1rem;
+// Ejercicio 1
+@for $i from 1 through 6 {
+    .text-#{$i}{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 3rem - (($i - 1) * 0.3rem);
+        background-color: #2c83bd;
         margin: 1rem;
-        padding: 0.5rem 1rem;
-        border-radius: 0.2rem;
-    @if($i>2){
-        background-color: red;
-    }
+        padding: 0 0.5rem;
+        border-radius: 0.3rem;
+        color: white;
     }
 }
 
-
-// (No usado) Lista
-$sizes: small, medium, large;
-
-@each $i in $sizes {
-    .icon-#{$i} {
-    // Aplicamos estilos segun condicionales
-    @if $i == small {
-        width: 16px;
-        height: 16px;
-    } @else if $i == medium {
-        width: 24px;
-        height: 24px;
-    } @else if $i == large {
-        width: 32px;
-        height: 32px;
-        }
-    }
-}
-
+//Ejercicio 2
 $color: (
-    primary: #3b82f6,
-    secondary: #64748b,
-    success: #22c55e,
-    warning: #eab308
+    primary: #379cfa,
+    secundary: #adadad,
+    sucess: #008000,
+    darnger: #ff0000
 );
 
-@each $i ,$colores in $color{
-    .btn-#{$i} {
-        background-color: $colores;
-        background-color: darken($colores, 2%);
-        border: none;
-        font-size: 1rem;
-        margin: 1rem;
-        padding: 0.5rem 1rem;
-        border-radius: 0.2rem;
+@function borde-mas-oscuro($color, $i){
+    $border: darken($color, ($i - 1) * 5%);
+    @return $border
+}
+
+@each $ie, $color in $color{  
+    @for $if from 1 through 4 {
+        .btn-#{$ie}-#{$if} {
+            background-color: $color;
+            border: borde-mas-oscuro($color, $if) 0.2rem solid;
+            padding: 0.5rem 1rem;
+            border-radius: 0.2rem;
+        }
+        
     }
 }
 
-// (No usado) Lista de tuplas
-$status-list: 
-    (success, #22c55e, #ffffff),
-    (warning, #eab308, #000000),
-    (danger, #ef4444, #ffffff);
+//Ejercicio 3
+@function espacio-regillas($valor){
+    $valor: $valor/4;
+    @return $valor;
+}
 
-@each $i, $bg, $text in $status-list {
-    .alert-#{$i} {
-        background-color: $bg;
-        color: $text;
+.sec3{
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(4, espacio-regillas(50%));
+} 
+
+@for $i from 1 through 4{
+    .col-#{$i}{
+        background-color: #2c83bd;
+        font-size: 1.5rem;
+        color: white;
+        text-align: center;
+        border: 0.1rem black solid;
     }
 }
+
+//Ejercicio 4
+@function color-decidir($fondo){
+    @if(lightness($fondo) > 50%){
+        @return black;
+    } @else {
+        @return white;
+    }
+}
+
+$colores: (
+    1: #2d88ff,
+    2: #979797,
+    3: #fc3434,
+    4: #000000
+);
+
+@each $i, $color in $colores{
+    .fondo-#{$i}{
+        background-color: $color;
+        color: color-decidir($color);
+        font-size: 1.5rem;
+        padding: 0.5rem;
+    }
+}
+
+//Ejercicio 5
+@function delay($time, $i){
+    $time: $time + ($i * 0.1s);
+    @return $time;
+}
+
+@for $i from 1 through 4 {
+    .list-#{$i}{
+        background-color: #008000;
+        color: white;
+        width: 60px;
+        height: 60px;
+        animation: aparecer 0.6s ease-out forwards;
+        animation-delay: delay(0.1s, $i);
+    }
+}
+
+@keyframes aparecer {
+        0% {
+            opacity: 0; 
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1; 
+            transform: translateY(0);
+        }
+}
+
+
+
