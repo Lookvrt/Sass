@@ -1,284 +1,151 @@
-.text-1 {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 3rem;
-  background-color: #2c83bd;
-  margin: 1rem;
-  padding: 0 0.5rem;
-  border-radius: 0.3rem;
-  color: white;
+html {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-
-.text-2 {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 2.7rem;
-  background-color: #2c83bd;
-  margin: 1rem;
-  padding: 0 0.5rem;
-  border-radius: 0.3rem;
-  color: white;
-}
-
-.text-3 {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 2.4rem;
-  background-color: #2c83bd;
-  margin: 1rem;
-  padding: 0 0.5rem;
-  border-radius: 0.3rem;
-  color: white;
-}
-
-.text-4 {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 2.1rem;
-  background-color: #2c83bd;
-  margin: 1rem;
-  padding: 0 0.5rem;
-  border-radius: 0.3rem;
-  color: white;
-}
-
-.text-5 {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 1.8rem;
-  background-color: #2c83bd;
-  margin: 1rem;
-  padding: 0 0.5rem;
-  border-radius: 0.3rem;
-  color: white;
-}
-
-.text-6 {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 1.5rem;
-  background-color: #2c83bd;
-  margin: 1rem;
-  padding: 0 0.5rem;
-  border-radius: 0.3rem;
-  color: white;
-}
-
-.btn-primary-1 {
-  background-color: #379cfa;
-  border: #379cfa 0.2rem solid;
-  padding: 0.5rem 1rem;
-  border-radius: 0.2rem;
-}
-
-.btn-primary-2 {
-  background-color: #379cfa;
-  border: rgb(30.1219512195, 143.6853658537, 249.3780487805) 0.2rem solid;
-  padding: 0.5rem 1rem;
-  border-radius: 0.2rem;
-}
-
-.btn-primary-3 {
-  background-color: #379cfa;
-  border: rgb(6.1951219512, 131.3365853659, 247.8048780488) 0.2rem solid;
-  padding: 0.5rem 1rem;
-  border-radius: 0.2rem;
-}
-
-.btn-primary-4 {
-  background-color: #379cfa;
-  border: rgb(5.5731707317, 118.1512195122, 222.9268292683) 0.2rem solid;
-  padding: 0.5rem 1rem;
-  border-radius: 0.2rem;
-}
-
-.btn-secundary-1 {
-  background-color: #adadad;
-  border: #adadad 0.2rem solid;
-  padding: 0.5rem 1rem;
-  border-radius: 0.2rem;
-}
-
-.btn-secundary-2 {
-  background-color: #adadad;
-  border: rgb(160.25, 160.25, 160.25) 0.2rem solid;
-  padding: 0.5rem 1rem;
-  border-radius: 0.2rem;
-}
-
-.btn-secundary-3 {
-  background-color: #adadad;
-  border: rgb(147.5, 147.5, 147.5) 0.2rem solid;
-  padding: 0.5rem 1rem;
-  border-radius: 0.2rem;
-}
-
-.btn-secundary-4 {
-  background-color: #adadad;
-  border: rgb(134.75, 134.75, 134.75) 0.2rem solid;
-  padding: 0.5rem 1rem;
-  border-radius: 0.2rem;
-}
-
-.btn-sucess-1 {
-  background-color: #008000;
-  border: green 0.2rem solid;
-  padding: 0.5rem 1rem;
-  border-radius: 0.2rem;
-}
-
-.btn-sucess-2 {
-  background-color: #008000;
-  border: rgb(0, 102.5, 0) 0.2rem solid;
-  padding: 0.5rem 1rem;
-  border-radius: 0.2rem;
-}
-
-.btn-sucess-3 {
-  background-color: #008000;
-  border: #004d00 0.2rem solid;
-  padding: 0.5rem 1rem;
-  border-radius: 0.2rem;
-}
-
-.btn-sucess-4 {
-  background-color: #008000;
-  border: rgb(0, 51.5, 0) 0.2rem solid;
-  padding: 0.5rem 1rem;
-  border-radius: 0.2rem;
-}
-
-.btn-darnger-1 {
-  background-color: #ff0000;
-  border: red 0.2rem solid;
-  padding: 0.5rem 1rem;
-  border-radius: 0.2rem;
-}
-
-.btn-darnger-2 {
-  background-color: #ff0000;
-  border: rgb(229.5, 0, 0) 0.2rem solid;
-  padding: 0.5rem 1rem;
-  border-radius: 0.2rem;
-}
-
-.btn-darnger-3 {
-  background-color: #ff0000;
-  border: #cc0000 0.2rem solid;
-  padding: 0.5rem 1rem;
-  border-radius: 0.2rem;
-}
-
-.btn-darnger-4 {
-  background-color: #ff0000;
-  border: rgb(178.5, 0, 0) 0.2rem solid;
-  padding: 0.5rem 1rem;
-  border-radius: 0.2rem;
-}
-
-.sec3 {
+html body {
+  margin: 0;
   display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: repeat(4, 12.5%);
+  grid-template-areas: "header", "main", "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 800px 80px;
 }
-
-.col-1 {
-  background-color: #2c83bd;
-  font-size: 1.5rem;
+html body header {
+  grid-area: "header";
+  background-color: #7caaff;
+  padding: 1rem;
+}
+html body main {
+  grid-area: "main";
+}
+html body footer {
+  grid-area: "footer";
+  background-color: black;
   color: white;
+  padding: 1rem;
   text-align: center;
-  border: 0.1rem black solid;
 }
 
-.col-2 {
-  background-color: #2c83bd;
-  font-size: 1.5rem;
-  color: white;
-  text-align: center;
-  border: 0.1rem black solid;
-}
-
-.col-3 {
-  background-color: #2c83bd;
-  font-size: 1.5rem;
-  color: white;
-  text-align: center;
-  border: 0.1rem black solid;
-}
-
-.col-4 {
-  background-color: #2c83bd;
-  font-size: 1.5rem;
-  color: white;
-  text-align: center;
-  border: 0.1rem black solid;
-}
-
-.fondo-1 {
-  background-color: #2d88ff;
+.alert-info {
+  background-color: #2365e9;
+  font-size: 1rem;
   color: black;
-  font-size: 1.5rem;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  border: none;
+}
+.alert-info:hover {
+  cursor: pointer;
 }
 
-.fondo-2 {
-  background-color: #979797;
+.alert-success {
+  background-color: #86e923;
+  font-size: 1rem;
   color: black;
-  font-size: 1.5rem;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  border: none;
+}
+.alert-success:hover {
+  cursor: pointer;
 }
 
-.fondo-3 {
-  background-color: #fc3434;
+.alert-warning {
+  background-color: #23e9e9;
+  font-size: 1rem;
   color: black;
-  font-size: 1.5rem;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  border: none;
+}
+.alert-warning:hover {
+  cursor: pointer;
 }
 
-.fondo-4 {
-  background-color: #000000;
-  color: white;
-  font-size: 1.5rem;
-  padding: 0.5rem;
+.alert-danger {
+  background-color: #e92323;
+  font-size: 1rem;
+  color: black;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  border: none;
+  animation: borde 1.5s infinite;
+}
+.alert-danger:hover {
+  cursor: pointer;
 }
 
-.list-1 {
-  background-color: #008000;
-  color: white;
-  width: 60px;
-  height: 60px;
-  animation: aparecer 0.6s ease-out forwards;
-  animation-delay: 0.2s;
-}
-
-.list-2 {
-  background-color: #008000;
-  color: white;
-  width: 60px;
-  height: 60px;
-  animation: aparecer 0.6s ease-out forwards;
-  animation-delay: 0.3s;
-}
-
-.list-3 {
-  background-color: #008000;
-  color: white;
-  width: 60px;
-  height: 60px;
-  animation: aparecer 0.6s ease-out forwards;
-  animation-delay: 0.4s;
-}
-
-.list-4 {
-  background-color: #008000;
-  color: white;
-  width: 60px;
-  height: 60px;
-  animation: aparecer 0.6s ease-out forwards;
-  animation-delay: 0.5s;
-}
-
-@keyframes aparecer {
+@keyframes borde {
   0% {
-    opacity: 0;
-    transform: translateY(20px);
+    box-shadow: 0 0 0 0px rgba(231, 76, 60, 0.7019607843);
   }
   100% {
-    opacity: 1;
-    transform: translateY(0);
+    box-shadow: 0 0 0 8px rgba(231, 76, 60, 0);
   }
+}
+.card-1 {
+  background-color: #c9c9c9;
+  color: black;
+  font-size: 1.2rem;
+  margin: 1rem auto;
+  transition: box-shadow 0.3s ease;
+  border-spacing: 0;
+  overflow: hidden;
+}
+.card-1:hover {
+  transform: translateY(-5px);
+  box-shadow: 0.2rem 0.2rem 0.4rem #364552;
+  cursor: pointer;
+}
+.card-1 thead th {
+  border: black 0.1rem solid;
+  padding: 0.5rem 1rem;
+}
+.card-1 tbody td {
+  border: black 0.1rem solid;
+  padding: 0.5rem 1rem;
+}
+
+.card-2 {
+  background-color: #c9c9c9;
+  color: black;
+  font-size: 1.4rem;
+  margin: 1rem auto;
+  transition: box-shadow 0.3s ease;
+  border-spacing: 0;
+  overflow: hidden;
+}
+.card-2:hover {
+  transform: translateY(-5px);
+  box-shadow: 0.4rem 0.4rem 0.4rem #364552;
+  cursor: pointer;
+}
+.card-2 thead th {
+  border: black 0.1rem solid;
+  padding: 0.5rem 1rem;
+}
+.card-2 tbody td {
+  border: black 0.1rem solid;
+  padding: 0.5rem 1rem;
+}
+
+.card-3 {
+  background-color: #c9c9c9;
+  color: black;
+  font-size: 1.6rem;
+  margin: 1rem auto;
+  transition: box-shadow 0.3s ease;
+  border-spacing: 0;
+  overflow: hidden;
+}
+.card-3:hover {
+  transform: translateY(-5px);
+  box-shadow: 0.6rem 0.6rem 0.4rem #364552;
+  cursor: pointer;
+}
+.card-3 thead th {
+  border: black 0.1rem solid;
+  padding: 0.5rem 1rem;
+}
+.card-3 tbody td {
+  border: black 0.1rem solid;
+  padding: 0.5rem 1rem;
 }/*# sourceMappingURL=style.css.map */
