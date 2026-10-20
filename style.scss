@@ -1,42 +1,80 @@
-nav{
-    display: flex;
+.btn-bg{
+    border: none;
+    background-color: lightcoral;
+    padding: 0.5rem 1rem;
+    font-size: 2.5rem;
+    transition: background-color 1s, border-radius 1s;
+    &:hover{
+        background-color: lightblue;
+        border-radius: 0.5rem;
+    }
 }
 
-$colores: (
-    '1': #ffd930,
-    '2': #5eff81,
-    '3': #53f9ff,
-    '4': #e732ff
-);
+.btn-es{
+    border: none;
+    background-color: lightgreen;
+    padding: 0.5rem 1rem;
+    margin: 1rem 0;
+    font-size: 2.5rem;
+    transition: transform 1s, margin 1s;
+    &:hover{
+        transform: scale(2);
+        margin: 2.5rem 4.7rem;
+    }
+}
 
-@each $i, $color in $colores{
-        .nav-#{$i}{
-            position: relative;
-            padding: 1rem 0.5rem;
-            text-decoration: none;
-            color: white;
-            background-color: black;
+.btn-rt{
+    border: none;
+    background-color: lightsalmon;
+    padding: 0.5rem 1rem;
+    font-size: 2.5rem;
+    transition: transform 5s ease;
+    &:hover{
+        transform: rotate(360deg);
+    }
+}
 
-            span {
-                position: relative;  
-            }
-        
-        &::before { 
-            content: "";
-            position: absolute; 
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 0.3rem; 
-            background-color: $color;
-            transition: height 0.2s ease;
-        }
-        
-        &:hover {
-            color: black;
-            &::before {
-                height: 100%;
-            }
-        } 
+.nav{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow-x: hidden;
+    list-style-type: none;
+    padding-left: 0; 
+    & li{
+        width: 100%;
+        transition: transform 2s ease-in-out;
+    &:has(a:hover){
+        transform: translateX(calc(100% - 72px));  
+    }
+    }
+}
+
+@for $i from 1 through 4 {
+    .nav-#{$i}{
+        font-size: 2rem;
+        text-decoration: none;
+        color: black;
+        background-color: lightseagreen;
+        transition: background-color 2s ease;
+    &:hover{
+        background-color: lightpink;
+    }  
+    }
+}
+
+$color-fondo: #1976a1;
+
+.text{
+    border-radius: 0.5rem;
+    text-align: center;
+    border: 1px solid #4d4d4d;
+    width: 120px;
+    font-size: 2.5rem;
+    background-color: $color-fondo;
+    color: $color-fondo;
+    transition: color 2s ease-in-out;
+    &:hover{
+        color: white;
     }
 }
