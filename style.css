@@ -1,169 +1,77 @@
-html {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+.btn {
+  border: none;
+  background-color: aquamarine;
+  padding: 0.5rem 1rem;
+  transition: font-size 2s ease-in-out;
 }
-html body {
-  margin: 0;
-  display: grid;
-  grid-template-areas: "header", "main", "footer";
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 800px 80px;
-}
-html body header {
-  grid-area: "header";
-  background-color: #000000;
-  padding: 1rem;
-}
-html body main {
-  grid-area: "main";
-}
-html body footer {
-  grid-area: "footer";
-  border-top-left-radius: 20%;
-  border-top-right-radius: 20%;
-  background-color: #7420d4;
-  color: #ffffff;
-  padding: 1rem;
-  text-align: center;
+.btn:hover {
+  font-size: 1.5rem;
 }
 
-.header-font {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 4rem;
-}
-.header-font .logo {
-  color: #ffffff;
-  font-size: 1.8rem;
-  font-weight: bold;
-}
-.header-font .header-left {
-  display: flex;
-  align-items: center;
-  gap: 4rem;
-}
-.header-font .header-right {
-  display: flex;
-}
-.header-font .header-right i {
-  margin-right: 1rem;
-  margin-left: 1rem;
-  text-decoration: none;
-  color: #ffffff;
-  transition: color 0.5s ease-in-out, transform 0.7s ease-in-out;
-}
-.header-font .header-right i:hover {
-  transform: scale(1.2);
-  color: red;
-}
-
-.navbar {
-  display: flex;
-  flex-direction: row;
-  list-style-type: none;
-  gap: 2rem;
-}
-.navbar a {
-  position: relative;
-  font-size: 1.2rem;
-  text-decoration: none;
-  color: #ffffff;
-}
-.navbar a::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
+.circulo {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
   background-color: red;
-  height: 0.2rem;
-  border-radius: 10%;
-  width: 0;
-}
-.navbar a:hover {
-  animation: navbar 0.5s ease-in-out forwards;
-}
-.navbar a:hover::before {
-  animation: indice 0.5s ease-in-out forwards;
+  animation: transform 10s ease-in-out;
+  animation: rotate 1s ease-in-out infinite;
 }
 
-@keyframes navbar {
+@keyframes rotate {
   0% {
-    color: white;
+    transform: rotate(0);
   }
   100% {
-    color: red;
+    transform: rotate(360deg);
   }
 }
-@keyframes indice {
+.titulo {
+  animation: entrada 1s ease-in-out;
+}
+
+@keyframes entrada {
   0% {
-    width: 0;
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.cuadro {
+  height: 80px;
+  width: 80px;
+  animation: colores 1s ease-in-out infinite;
+}
+
+@keyframes colores {
+  0% {
+    background-color: yellow;
   }
   50% {
-    width: 50%;
+    background-color: blue;
+  }
+  75% {
+    background-color: green;
   }
   100% {
-    width: 100%;
+    background-color: yellow;
   }
 }
-.section-first {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  color: #ffffff;
-  height: 350px;
-  background: linear-gradient(to bottom, rgba(4, 5, 7, 0.8705882353), rgba(48, 57, 83, 0.8705882353), rgba(166, 175, 201, 0.8705882353));
-  padding: 2rem;
-  padding-top: 1rem;
-  text-align: center;
-  border-bottom-left-radius: 1.5rem;
-  border-bottom-right-radius: 1.5rem;
-}
-.section-first div {
-  margin: 1rem;
-  width: 850px;
-}
-.section-first h1 {
-  margin: 0;
-}
-.section-first .btn-first {
-  display: inline-flex;
-  justify-content: center;
-  gap: 1rem;
-}
-.section-first .btn-first button {
-  border: none;
-  border-radius: 2.5rem;
-  padding: 0.8rem 2rem;
-  background-color: #7420d4;
-  color: white;
-  transition: transform 0.2s ease-in-out;
-}
-.section-first .btn-first button:hover {
-  cursor: pointer;
-  transform: scale(1.2);
+.pelota {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  background-color: antiquewhite;
+  animation: rebote 1s ease-in-out infinite alternate;
 }
 
-.section-content {
-  display: flex;
-  position: relative;
-  top: -25px;
-  align-items: center;
-  justify-content: space-around;
-  background-color: #1f1f1f;
-  padding: 1rem 0;
-  height: 220px;
-  color: #ffffff;
-  border-radius: 1rem;
-  margin: 0 1rem;
-  animation: zoom 1s ease-in-out 0.5s;
-}
-
-@keyframes zoom {
-  0% {
-    transform: scale(0.9);
+@keyframes rebote {
+  0%, 100% {
+    transform: translateY(0px);
   }
-  100% {
-    transform: scale(1);
+  50% {
+    transform: translateY(150px);
   }
 }/*# sourceMappingURL=style.css.map */
