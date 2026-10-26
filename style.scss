@@ -1,64 +1,28 @@
-.btn {
-    border: none;
-    background-color: aquamarine;
-    padding: 0.5rem 1rem;
-    transition: font-size 2s ease-in-out;
-    &:hover{
-        font-size: 1.5rem;
-    }
+body{
+    margin: 0;
+    background-color: #0f0f57;
 }
 
 .circulo {
-    height: 100px;
-    width: 100px;
+    margin: 250px auto;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    background-color: red;
-    animation: transform 10s ease-in-out;
-    animation: rotate 1s ease-in-out infinite;
+    animation: rebote 1s ease-in-out infinite;
 }
 
-@keyframes rotate {
-    0%{transform: rotate(0)};
-    100%{transform: rotate(360deg)};
-}
-
-.titulo {
-    animation: entrada 1s ease-in-out;
-}
-
-@keyframes entrada {
-    0%{ 
-        opacity: 0;
-        transform: translateX(-100px);
-    };
-    100%{
-        opacity: 1;
-        transform: translateX(0);
-    };
-}
-
-.cuadro {
-    height: 80px;
-    width: 80px;
-    animation: colores 1s ease-in-out infinite;
-}
-
-@keyframes colores {
-    0%{background-color: yellow};
-    50%{background-color: blue};
-    75%{background-color: green}
-    100%{background-color: yellow};
-}
-
-.pelota {
-    height: 80px;
-    width: 80px;
-    border-radius: 50%;
-    background-color: antiquewhite;
-    animation: rebote 1s ease-in-out infinite alternate;
-}
 
 @keyframes rebote {
-    0%,100%{transform: translateY(0px)};
-    50%{transform: translateY(150px)};
+    0%, 100%  {
+        -webkit-transform: translateY(0px);
+        -moz-transform: translateY(0px);
+        -ms-transform: translateY(0px);
+        background-color: darkkhaki;
+    }
+    50% {
+        -webkit-transform: translateY(100px);
+        -moz-transform: translateY(100px);
+        -ms-transform: translateY(100px);
+        background-color: red;
+    }
 }
