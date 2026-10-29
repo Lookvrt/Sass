@@ -1,193 +1,222 @@
-// Ejercicio 1
-:root {
-    // Variables CSS dinámicas
-    --bg-color-start: #6a11cb;
-    --bg-color-end: #2575fc;
-    --bg-fallback: #2575fc;
-    --flex-gap: 1.5rem;
-    --container-padding: 2rem;
-}
+// TRANSICIONES
 
-$fallback-start: #6a11cb;
-$fallback-end: #2575fc;
+//Ejercicio 1
+.btn-cta{
+    border: none;
+    height: 40px;
+    width: 80px;
+    background-color: aquamarine;
+    box-shadow: 0.1rem 0.1rem 0.2rem #364552;
+    transition: background-color 0.3s ease-out 0.1s, 
+                transform 0.3s ease-out 0.1s,
+                shadow 0.3s ease-out 0.1s;
 
-// Mixin para Flexbox retrocompatible
-@mixin flex-container($direction: row, $justify: center, $align: center) {
-    // Display flex con prefijos
-    display: -webkit-box; // WebKit antiguo (Chrome/Safari)
-    display: -webkit-flex; // Safari 6.1 - 8
-    display: -ms-flexbox; // IE 10
-    display: flex; // Estándar
-
-    // Dirección
-    -webkit-box-orient: if($direction ==row or $direction ==row-reverse, horizontal, vertical);
-    -webkit-box-direction: if($direction ==row-reverse or $direction ==column-reverse, reverse, normal);
-    -webkit-flex-direction: $direction;
-    -ms-flex-direction: $direction;
-    flex-direction: $direction;
-
-    // Alineación Horizontal (Justify)
-    -webkit-box-pack: $justify;
-    -webkit-justify-content: $justify;
-    -ms-flex-pack: $justify;
-    justify-content: $justify;
-
-    // Alineación Vertical (Align items)
-    -webkit-box-align: $align;
-    -webkit-align-items: $align;
-    -ms-flex-align: $align;
-    align-items: $align;
-}
-
-// Mixin para Gradientes Lineales retrocompatibles usando Variables CSS
-@mixin linear-gradient-var($deg, $start-var, $end-var, $start-fallback, $end-fallback) {
-    // Fallback para navegadores sin soporte de variables ni gradientes (IE9/10/11)
-    background-color: $end-fallback;
-    background-color: var(--bg-fallback);
-
-    // Sintaxis antigua de WebKit (-webkit-gradient)
-    background-image: -webkit-gradient(linear,
-        left top, right bottom,
-        from(#{$start-fallback}),
-        to(#{$end-fallback}));
-
-    // Sintaxis con prefijos (-webkit-, -moz-, -o-)
-    background-image: -webkit-linear-gradient($deg, var($start-var), var($end-var));
-    background-image: -moz-linear-gradient($deg, var($start-var), var($end-var));
-    background-image: -o-linear-gradient($deg, var($start-var), var($end-var));
-
-    // Sintaxis Estándar Moderna
-    background-image: linear-gradient($deg, var($start-var), var($end-var));
-}
-
-.gradient-flex-container {
-    // Aplicar Mixin de Gradiente
-    @include linear-gradient-var(135deg,
-        --bg-color-start,
-        --bg-color-end,
-        $fallback-start,
-        $fallback-end );
-
-    // Aplicar Mixin de Flexbox
-    @include flex-container(row, center, center);
-
-    // Espaciado y dimensiones
-    padding: var(--container-padding);
-    gap: var(--flex-gap);
-    min-height: 250px;
-    border-radius: 12px;
-
-    // Fallback para navegadores antiguos que NO soportan `gap` en Flexbox
-    @supports not (gap: 1rem) {
-        >.card {
-            margin: calc(var(--flex-gap) / 2);
-        }
+    &:hover{
+        transform: translateY(-3px);
+        background-color: aqua;
+        box-shadow: 0.6rem 0.6rem 0.4rem #364552;
     }
 
-    // Estilos hijos (Anidamiento de Sass)
-    .card {
-        background: #ffffff33;  
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-        color: #ffffff;
-        padding: 1.5rem 2rem;
-        border-radius: 8px;
-        border: 1px solid #ffffff4d;
-        font-family: system-ui, -apple-system, sans-serif;
-        font-weight: 600;
+    &:active{
+        background-color: #1e40af;
+        transform: translateY(0);
+        box-shadow: 0.6rem 0.6rem 0.4rem #364552;
     }
 }
 
 //Ejercicio 2
-.circulo {
-    margin: 3rem auto;
-    background-color: $fallback-end;
+.article-link{
+    position: relative;
+    display: block;
+    margin-top: 1rem;
+    height: 40px;
+    width: 80px;
+    background-color: #ffe881;
+
+    &::after{
+        position: absolute;
+        content: "";
+        bottom: 0;
+        left: 0;
+        background-color: red;
+        height: 0.2rem;
+        width: 0%;
+        transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
+    }
+
+    &:hover{
+        &::after{
+            width: 100%;
+        }
+    }
+}
+
+//Ejercicio 3
+.search-input{
+    border: 0.1rem #a3a3a3 solid;
+    width: 160px;
+    transition: width 0.3s  0.1s,
+                border 0.3s 0.1s;
+
+    &:focus{
+        width: 260px; 
+        border: 0.1rem #1d1d1d solid;
+    }
+}
+
+//Ejercicio 4
+.user-card{
+    background-color: #1e40af;
+    width: 200px;
+    color: white;
+
+    & .card-details{
+        opacity: 0;
+        transition-property: opacity;
+        transition-duration: 1s;
+        transition-timing-function: ease-in-out;
+        transition-delay: 0.1s;
+
+        &:hover{
+            opacity: 1;
+        }
+    }
+}
+
+// ANIMACIONES
+
+//Ejercicio 5
+.promo-banner{
     height: 100px;
-    width: 100px;
-    border-radius: 30%;
-    will-change: transform, opacity; // Optimización de rendimiento para el motor de renderizado
+    width: 150px;
+    background-color: #452aa5;
+    animation: zoomFadeIn 0.7s ease-out;
+    animation-fill-mode: forwards;
+    color: white;
+}
 
-    &:hover {
-        animation: rotar 2s ease infinite;
-    }
-
-    &:active {
+@keyframes zoomFadeIn {
+    0%{
+        opacity: 0;
         transform: scale(0.9);
+    };
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    };
+}
+
+//Ejercicio 6
+.toast-notification{
+    background-color: red;
+    color: white;
+    margin-top: 1rem;
+    height: 80px;
+    width: 150px;
+    animation: slideInRight 0.6s ease-in-out 0.4s;
+}
+
+@keyframes slideInRight {
+    0%{
+        transform: translateX(120%);
+    };  
+    100%{
+        transform: translateX(0%);
+    };
+}
+
+//Ejercicio 7
+.post-item {
+    background-color: cornflowerblue;
+    height: 50px;
+    width: 150px;
+    margin-top: 1rem;
+    animation: fadeUpEntrance 1s ease-in-out;
+
+    @for $i from 1 through 3 {
+        &:nth-child(#{$i}) {
+            animation-delay: #{$i * 0.2}s;
+        }
+    } 
+}
+
+@keyframes fadeUpEntrance {
+    0%{
+        transform: translateY(25px);
+        opacity: 0;
+    } 
+    100%{
+        transform: translateX(0px);
+        opacity: 1;
     }
+}
+
+//Compatibilidad de Navegadores
+
+//Ejercicio 8
+@mixin vendor-transform($margin: 1rem){
+    display: block; 
+    height: 20px;
+    width: 100px;
+    border-radius: 0.2rem;
+    padding: 0.5rem 1rem;
+    background-color: #eddf64;
+    margin-top: $margin;
+
+    -webkit-transition: -webkit-transform 1s ease-in-out;
+    -moz-transition: -webkit-transform 1s ease-in-out;
+    transition: transform 1s ease-in-out;  
+}
+
+.btn-icon{
+    @include vendor-transform(1rem);
+
+    &:hover{
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+}
+
+//Ejercicio 9
+@mixin vendor-animation($name: name, $time: 1s, $function: ease, $iteration: none){
+    -webkit-animation: $name $time $function $iteration;
+    -moz-animation: $name $time $function $iteration;
+    animation: $name $time $function $iteration;
+}
+
+.spinner-loader{
+    margin-top: 1rem;
+    background-color: coral;
+    height: 50px;
+    width: 50px;
+    border-radius: 40%;
+    @include vendor-animation(rotar, 1s, ease-in-out, infinite)
 }
 
 @keyframes rotar {
-    0% {
-        transform: rotate(0deg) scale(1);
-        opacity: 0.7;
-    }
-
-    50% {
-        transform: rotate(180deg) scale(1.3);
-        opacity: 1;
-        filter: drop-shadow(0 10px 15px #0000004d); // Sombra 
-    }
-
-    100% {
-        transform: rotate(360deg) scale(1);
-        opacity: 0.7;
-    }
+    0%{
+        transform: rotate(0);
+    };
+    100%{
+        transform: rotate(360deg);
+    };
 }
 
-
-// Ejecicio 3
-$glass-bg-fallback: #141424f2;
-$glass-bg-supported: #ffffff26;
-$glass-blur: 12px;
-$glass-border: 1px solid #ffffff33;
-$glass-radius: 16px;
-
-
-@mixin apply-glassmorphism {
-    // Estilo por defecto si el navegador NO admite backdrop-filter o @supports
-    background-color: $glass-bg-fallback;
-    border: $glass-border;
-    border-radius: $glass-radius;
-    color: #ffffff;
-
-    // Evaluamos soporte con prefijo -webkit- (Safari/iOS) o versión estándar
-    @supports (backdrop-filter: blur($glass-blur)) or (-webkit-backdrop-filter: blur($glass-blur)) {
-        background-color: $glass-bg-supported;
-
-        // Aplicamos los prefijos requeridos
-        -webkit-backdrop-filter: blur($glass-blur);
-        backdrop-filter: blur($glass-blur); 
-        box-shadow: 0 8px 32px 0 #0000004d;
-    }
+//Ejercicio10
+.subnav-toolbar {
+    position: relative;
+    margin-top: 1rem;
+    background-color: chartreuse;
+    height: 20px;
+    width: 100%;
 }
 
-.section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 350px;
-    background: linear-gradient(135deg, #0f172a, #38bdf8, #818cf8);
-
-    // Tarjeta con efecto Glassmorphism
-    .card {
-        width: 100%;
-        max-width: 380px;
-        padding: 2.5rem;
-
-        @include apply-glassmorphism;
-
-        .card-title {
-            font-family: system-ui, -apple-system, sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: 0.75rem;
-            font-weight: 700;
-        }
-
-        .card-description {
-            font-family: system-ui, -apple-system, sans-serif;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            opacity: 0.85;
-        }
+@supports (position: sticky) or (position: -webkit-sticky) {
+    .subnav-toolbar {
+        position: -webkit-sticky;
+        position: sticky;
+        bottom: 0; // en nuestro caso no es top: 0 
+        z-index: 100;
     }
 }
